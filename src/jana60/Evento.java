@@ -2,6 +2,7 @@ package jana60;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 public class Evento implements Comparable<Evento> {
     private final DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -11,7 +12,7 @@ public class Evento implements Comparable<Evento> {
 
     //contructor
 
-    public Evento(String titolo, String data, int postiTot) throws IllegalArgumentException {
+    public Evento(String titolo, String data, int postiTot) throws IllegalArgumentException, DateTimeParseException {
         validPosti(postiTot);
 
         this.titolo = titolo;
@@ -48,7 +49,7 @@ public class Evento implements Comparable<Evento> {
 
     //validator
 
-    private LocalDate validData(String data) throws IllegalArgumentException {
+    private LocalDate validData(String data) throws IllegalArgumentException, DateTimeParseException {
         LocalDate date = LocalDate.parse(data,format);
         if (date.isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("La data non può essere nel passato");

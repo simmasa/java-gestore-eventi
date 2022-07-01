@@ -4,7 +4,8 @@ public class Conferenza extends Evento {
     private String argomento;
     private Oratore oratore;
 
-    public Conferenza(String titolo, String data, int postiTot, String argomento, Oratore oratore) throws IllegalArgumentException {
+    public Conferenza(String titolo, String data, int postiTot, String argomento, Oratore oratore)
+            throws IllegalArgumentException {
         super(titolo, data, postiTot);
         this.argomento = argomento;
         this.oratore = oratore;
