@@ -13,6 +13,7 @@ public class Main {
         String titolo,data;
         int posti;
 
+
         System.out.println("Inserisci il titolo dell'evento:");
         titolo= "titolo";
         System.out.println("Inserisci la data del tuo evento in formato dd/mm/yyyy : ");
@@ -22,9 +23,34 @@ public class Main {
             System.out.println("Inserisci la quantità di posti a tua disposizione:");
             posti = Integer.parseInt(scan.nextLine());
 
-            Evento primo = new Evento(titolo, data, posti);
-            listaEventi.add(primo);
+            String confCheck;
+            do {
+                System.out.println("L'evento che vuoi inserire è una conferenza? y/n");
+                confCheck=scan.nextLine();
+            }while (!confCheck.equals("y") && !confCheck.equals("n"));
+
+            switch (confCheck) {
+                case "n":
+                    Evento primo = new Evento(titolo, data, posti);
+                    listaEventi.add(primo);
+                    break;
+                case"y":
+                    System.out.println("Inserisci l'argomento della conferenza");
+                    String argomento = scan.nextLine();
+                    System.out.println("Inserisci il nome dell'oratore");
+                    String nomeOr = scan.nextLine();
+                    System.out.println("Inserisci il cognome dell'oratore");
+                    String cognomeOr = scan.nextLine();
+                    System.out.println("Inserisci il titolo dell'oratore");
+                    String titoloOr = scan.nextLine();
+                    Conferenza conf =new Conferenza(titolo, data, posti,argomento,new Oratore(nomeOr,cognomeOr,titoloOr));
+                    listaEventi.add(conf);
+                    break;
+                default:
+                    System.out.println("Inserito valore non valido");
+            }
             System.out.println("Abbiamo aggiunto il tuo evento alla nostra lista");
+            System.out.println(listaEventi.get(0));
         } catch (IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
@@ -53,7 +79,7 @@ public class Main {
                 break;
 
             case "2":
-                System.out.println("Grazie per aver creato un evento. ");
+                System.out.println("Grazie per aver creato un evento.");
         }
 
     }
