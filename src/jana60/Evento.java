@@ -3,7 +3,7 @@ package jana60;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class Evento {
+public class Evento implements Comparable<Evento> {
     private final DateTimeFormatter format = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     private String titolo;
     private LocalDate data;
@@ -79,8 +79,24 @@ public class Evento {
             postiPrenotati--;
     }
 
+
     @Override
     public String toString() {
         return "Evento in data "+ format.format(data)+" dal titolo "+titolo;
+    }
+
+    @Override
+    public int compareTo(Evento o) {
+        if (data.isBefore(o.data)) {
+            return -1;
+        } else if (data.isAfter(o.data)) {
+            return 1;
+        } else {
+            if (titolo.compareTo(o.titolo) > 0) {
+                return 1;
+            }else return -1;
+
+        }
+
     }
 }

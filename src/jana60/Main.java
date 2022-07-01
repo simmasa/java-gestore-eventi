@@ -14,7 +14,7 @@ public class Main {
         int posti;
 
 
-        System.out.println("Inserisci il titolo dell'evento:");
+        System.out.println("Inserisci il titolo dell'evento");
         titolo= "titolo";
         System.out.println("Inserisci la data del tuo evento in formato dd/mm/yyyy : ");
         data = "27/12/2022";
