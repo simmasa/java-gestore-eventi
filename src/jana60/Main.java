@@ -53,7 +53,7 @@ public class Main {
                 break;
 
             case "2":
-                System.out.println("Grazie per aver creato un evento.");
+                System.out.println("Grazie per aver creato un evento. ");
         }
 
     }
